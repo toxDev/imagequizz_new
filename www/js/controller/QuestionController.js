@@ -39,7 +39,7 @@ angular.module('imagequizz').controller('QuestionController',
                         return;
                     }
                 });
-                result = 'Korrekte Antwort'
+                result = 'Korrekte Antwort';
             } else {
                 $scope.question.options.forEach(function (option) {
                     if (option['option'] == answer) {
@@ -49,10 +49,10 @@ angular.module('imagequizz').controller('QuestionController',
                         $scope.rightAnswer = option['option'];
                     }
                 });
-                result = 'Leider Falsch'
+                result = 'Leider Falsch';
             }
             $timeout(function () {
-                //$state.go('question_lists);
+                //$state.go('question_lists');
             }, 2000)
         };
     }
