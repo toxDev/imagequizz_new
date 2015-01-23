@@ -1,0 +1,30 @@
+<ion-modal-view>
+    <div class="bar bar-header bar-dark">
+        <h1 class="title">Kategorien hinzufügen</h1>
+        <button class="button button-icon icon ion-ios7-close close-modal"
+                ng-click="closeQuestionImportModal()">
+        </button>
+    </div>
+
+    <ion-content class="has-header">
+        <ion-list>
+            <ion-item class="item-text-wrap animation">
+                <ion-checkbox
+                        ng-repeat="item in importModules | unique:'category'" ng-model="item.status" ng-checked="item.status">
+                    {{item.category}}
+                </ion-checkbox>
+            </ion-item>
+        </ion-list>
+        <div class="card" ng-hide="importModules.length">
+            <a class="item item-icon-left">
+                <i class="icon ion-heart-broken"></i>
+                Keine neuen Kategorien vorhanden
+            </a>
+        </div>
+    </ion-content>
+    <ion-footer-bar class="bar-balanced">
+        <div class="button-bar">
+            <button class="button button-clear" ng-click="stCtrl.importModules()">Importieren</button>
+        </div>
+    </ion-footer-bar>
+</ion-modal-view>

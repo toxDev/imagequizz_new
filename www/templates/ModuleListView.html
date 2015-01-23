@@ -1,7 +1,7 @@
 <ion-view title="Kategorien">
     <ion-nav-buttons side="right">
         <button class="button button-icon icon ion-ios7-search">
-                <!--ng-click="mlCtrl.toggleSearch()" ng-hide="mlCtrl.searchActive" href="#"-->
+            <!--ng-click="mlCtrl.toggleSearch()" ng-hide="mlCtrl.searchActive" href="#"-->
         </button>
     </ion-nav-buttons>
     <ion-content class="has-header">
@@ -11,37 +11,36 @@
         <!--<div ng-repeat="module in modules">{{module.category}}</div>-->
 
 
-<!--        <div class="item item-divider"
-             ng-repeat="module in filteredModules = (modules | filter:{category: mlCtrl.searchQuery} | unique: 'letter')">
-            {{letter}}
-        </div>
-        &lt;!&ndash;unique: Filter für doppelte Einträge&ndash;&gt;
+        <!--        <div class="item item-divider"
+                     ng-repeat="module in filteredModules = (modules | filter:{category: mlCtrl.searchQuery} | unique: 'letter')">
+                    {{letter}}
+                </div>
+                &lt;!&ndash;unique: Filter für doppelte Einträge&ndash;&gt;
+                <ion-list can-swipe="true">
+                    <ion-item class="item-text-wrap animation"
+                              ng-repeat="module in filteredModules = (modules | filter:{category: mlCtrl.searchQuery} | unique:'category')"
+                              href="#/questionlist/{{module.category}}">
+                        {{module.category}}
+                        <ion-option-button class="button-assertive"
+                                           ng-click="deleteCategory(module.category)">Löschen
+                        </ion-option-button>
+                    </ion-item>
+                </ion-list>-->
         <ion-list can-swipe="true">
             <ion-item class="item-text-wrap animation"
-                      ng-repeat="module in filteredModules = (modules | filter:{category: mlCtrl.searchQuery} | unique:'category')"
+                      ng-repeat="module in questions | unique:'category'"
                       href="#/questionlist/{{module.category}}">
                 {{module.category}}
                 <ion-option-button class="button-assertive"
-                                   ng-click="deleteCategory(module.category)">Löschen
+                                   ng-click="mlCtrl.deleteCategory(module.category)">Löschen
                 </ion-option-button>
-            </ion-item>
-        </ion-list>-->
-        <ion-list can-swipe="true">
-            <ion-item class="item-text-wrap animation"
-                      ng-repeat="module in filteredModules = (questions)"
-                      href="#/questionlist/{{module.category}}">
-                {{module.category}}
-<!--                <ion-option-button class="button-assertive"
-                                   ng-click="deleteCategory(module.category)">Löschen
-                </ion-option-button>-->
             </ion-item>
         </ion-list>
         <div class="card" ng-hide="questions.length">
-            <!--TO-DO IMPORT FUNKTION ADD-->
             <div class="item item-text-wrap">
                 <p>Keine Kategorien vorhanden</p>
                 <button class="button button-block ion-plus button-light"
-                        ng-click=""> Kategorien importieren
+                        ng-click="mlCtrl.goToSettings()"> Kategorien importieren
                 </button>
             </div>
         </div>

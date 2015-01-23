@@ -3,51 +3,30 @@
  */
 "use strict";
 angular.module('imagequizz').controller('ModuleListController',
-    function ($scope, StatDataPersist, QuestionDataPersist, Stat, Question) {
-
+    function ($scope, $state, QuestionData, StatData) {
         //Productive Code
-        $scope.questions = QuestionDataPersist.findAll();
+        $scope.questions = QuestionData.findAll();
 
-
-
-
-        var stat = new Stat(1,4,99,0);
-        StatDataPersist.update(stat);
-        //QuestionDataPersist.persist({'frage':'hallo?','anwort':'moin!'});
-        /*QuestionDataPersist.persist(new Question(99, "Häuser", "http://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Erithacus_rubecula_%28Marek_Szczepanek%29.jpg/640px-Erithacus_rubecula_%28Marek_Szczepanek%29.jpg", "@FlickrLickr", "Lateinischer Name: Erithacus rubecula",
-            [{
-                "option": "Meise",
-                "answer": true
-            },
-                {
-                    "option": "Rotkehlchen",
-                    "answer": true
-                },
-                {
-                    "option": "Buntspecht",
-                    "answer": false
-                },
-                {
-                    "option": "Lerche",
-                    "answer": false
-                }]
-        ))*/
-
-        $scope.modules = QuestionDataPersist.findAll();
-
-        //StatDataPersist.persist(new Stat(4,3,3,2));
-        var stats = StatDataPersist.findAll();
-
-
-        stats.$loaded().then(function () {
-            var temp = {};
-            for (var i = 0; i < stats.length; i++) {
-                temp = stats[i];
+        //Code für das Importieren von Modulen
+        this.deleteCategory = function (category) {
+            $scope.stats = StatData.findAll();
+            for (var i = 0; i < $scope.questions.length; i++) {
+                if($scope.questions[i].category === category){
+                    QuestionData.delete($scope.questions[i].$id);
+                    for (var j = 0; j <  $scope.stats.length; j++) {
+                        if($scope.questions[i].id ==  $scope.stats[j].questionID){
+                            StatData.delete($scope.stats[j].$id);
+                        }
+                    }
+                }
             }
-            temp.actRightSeries = 100;
-            StatDataPersist.update(temp);
+        }
 
-        })
+        //Ende Code für Löschen von Modulen
 
-        console.log(StatDataPersist.findAll());
-});
+        //Wechselt zum Settings Tab
+        this.goToSettings = function () {
+            $state.go('tabs.settings');
+        }
+
+    });

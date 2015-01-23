@@ -22,6 +22,6 @@ angular.module('imagequizz').factory('StatDataPersist',
             update: function (stat) {
                 this.findAll().$save(stat);
             }
-         };
+        };
         return service;
     });

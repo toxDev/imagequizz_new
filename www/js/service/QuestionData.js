@@ -14,19 +14,31 @@ angular.module('imagequizz').factory('QuestionData',
                 } else {
                     return QuestionDataLocal.findAll();
                 }
-            }/*,
+            },
             findById: function (id) {
-                return this.findAll().$getRecord(id);
+                if(sync){
+                    QuestionDataPersist.findById(id);
+                } else {
+
+                }
             },
             delete: function (id) {
-                this.findAll().$remove(this.findById(id));
+                if(sync){
+                    QuestionDataPersist.delete(id);
+                } else {
+
+                }
             },
             persist: function (question) {
-                this.findAll().$add(question);
-            },
-            update: function (question) {
-                this.findAll().$save(question);
-            }*/
+                if(sync){
+                    QuestionDataPersist.persist(question);
+                } else {
+
+                }
+            }/*,
+             update: function (question) {
+             this.findAll().$save(question);
+             }*/
         };
         return service;
     });
