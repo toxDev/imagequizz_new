@@ -38,6 +38,6 @@ angular.module('imagequizz').controller('QuestionListController',
 
              }
              });*/
-            $state.go('question_view_quizz', {id: $stateParams.id});
+            $state.go('question_view_quizz', {id: $stateParams.$id});
         };
     } );

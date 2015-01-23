@@ -51,7 +51,7 @@ angular.module('imagequizz', ['ionic', 'firebase', 'angular.filter'])
             });
         $urlRouterProvider.otherwise("/tab/modules");
     })
-    .constant('FIREBASE_URL', 'https://imagequizzmapp.firebaseio.com')
+    .constant('FIREBASE_URL', 'https://imagequizz.firebaseio.com')
     .run(function($ionicPlatform) {
         $ionicPlatform.ready(function() {
             // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard

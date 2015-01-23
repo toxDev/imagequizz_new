@@ -5,9 +5,14 @@ angular.module('imagequizz').controller('QuizzController',
         $scope.stats = StatData.findAll();
         $scope.questionList = [];
         for (var i = 0; i < $scope.questions.length; i++) {
+            console.log('1');
+            console.log($scope.stats);
             for (var j = 0; j < $scope.stats.length; j++) {
+                console.log('2');
                 if($scope.stats[j].questionID == $scope.questions[i].id){
+                    console.log('3');
                     if($scope.stats[j].actRightSeries < 6){
+                        console.log('4');
                         $scope.questionList.push($scope.questions[i]);
                     }
                 }
@@ -28,7 +33,7 @@ angular.module('imagequizz').controller('QuizzController',
         this.toggleInfo = function () {
             var popup = $ionicPopup.alert({
                 title: 'Information',
-                template: $scope.question.infoText
+                template: $scope.questions.infoText
             });
             $timeout(function () {
                 popup.close();
