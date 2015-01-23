@@ -59,10 +59,21 @@ angular.module('imagequizz').controller('QuizzController',
 
         };
         $scope.testAnswer = function (answer) {
+            var correctAnswer;
+            var stat = StatData.findById($scope.question.$id);//eventuell id statt $id
+            var right = stat.countRight;
+            var wrong = stat.countWrong;
+            var series = stat.actRightSeries;
+
+            $scope.question.options.forEach(function (option) {
+                if (option['answer'] == true) {
+                    correctAnswer = option['option'];
+                }
+            });
+
+
+            $scope.workedQuestionCount++;
             $scope.nextQuestion();
         }
-
-
-
     }
 );
