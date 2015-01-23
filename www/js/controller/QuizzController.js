@@ -18,6 +18,8 @@ angular.module('imagequizz').controller('QuizzController',
                 }
             }
         }
+        console.log($scope.stats);
+        console.log($scope.questions);
         console.log($scope.questionList);
 
         $scope.cur = 0;
@@ -42,14 +44,14 @@ angular.module('imagequizz').controller('QuizzController',
 
 
         //Ermittelt die aktuelle höhe des Dokuemnts für den View
-        $scope.actHight = $document.innerHeight;
+        $scope.actHeight = $document.innerHeight;
         //Setzten des Titels (aktuelle Frage/gesammt Fragen)
         //$ionicNavBarDelegate.setTitle($scope.act + "/" + $scope.complete);
 
         $scope.nextQuestion = function () {
             if($scope.cur < $scope.questionList.length){
                 $scope.question = $scope.questionList[$scope.cur++];
-                $ionicNavBarDelegate.setTitle($scope.cur + "/" + $scope.complete);
+                //$ionicNavBarDelegate.setTitle($scope.cur + "/" + $scope.complete);
             } else {
                 var categoryCompletePopup = $ionicPopup.alert({
                     title: 'Rundenstatistik',
@@ -61,7 +63,10 @@ angular.module('imagequizz').controller('QuizzController',
             }
 
         };
-        $scope.nextQuestion();
+        $scope.testAnswer = function (answer) {
+            $scope.nextQuestion();
+        }
+
 
 
     }
