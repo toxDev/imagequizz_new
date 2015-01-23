@@ -1,0 +1,43 @@
+<ion-view title="Statistik">
+    <ion-nav-buttons side="right">
+<!--        <button class="button button-icon icon ion-ios7-search">
+            &lt;!&ndash;ng-click="mlCtrl.toggleSearch()" ng-hide="mlCtrl.searchActive" href="#"&ndash;&gt;
+        </button>
+    </ion-nav-buttons>-->
+    <ion-content class="has-header">
+        <!--        <div class="item item-input-inset" ng-show="mlCtrl.searchActive">
+                    <label class="item-input-wrapper">
+                        <i class="icon ion-ios7-search placeholder-icon"></i>
+                        <input type="text" placeholder="Search" ng-model="mlCtrl.searchQuery">
+                    </label>
+                    <button class="button button-clear" style="min-height: inherit; line-height: inherit"
+                            ng-click="mlCtrl.toggleSearch()">Cancel
+                    </button>
+                </div>
+                <div ng-repeat="(letter, modules) in repeaterObject">
+                    <div class="item item-divider"
+                         ng-repeat="module in filteredModules = (modules | filter:{category: mlCtrl.searchQuery} | unique: 'letter')">
+                        {{letter}}
+                    </div>
+                    &lt;!&ndash;unique: Filter für doppelte Einträge&ndash;&gt;
+                    <ion-list can-swipe="true">
+                        <ion-item class="item-text-wrap animation"
+                                  ng-repeat="module in filteredModules = (modules | filter:{category: mlCtrl.searchQuery} | unique:'category')"
+                                  href="#/questionlist/{{module.category}}">
+                            {{module.category}}
+                            <ion-option-button class="button-assertive"
+                                               ng-click="deleteCategory(module.category)">Löschen
+                            </ion-option-button>
+                        </ion-item>
+                    </ion-list>
+                </div>
+                <div class="card" ng-hide="proofModules">
+                    <div class="item item-text-wrap">
+                        <p>Keine Kategorien vorhanden {{modules.length}}</p>
+                        <button class="button button-block ion-plus"
+                                ng-click="goImport()"> Kategorien importieren
+                        </button>
+                    </div>
+                </div>-->
+    </ion-content>
+</ion-view>

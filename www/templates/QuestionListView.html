@@ -1,0 +1,150 @@
+<ion-view title="Fragen">
+    <ion-nav-buttons side="left">
+        <!--Da keine Navigation zurück möglich ist(Durch Tab-Nav bedingt), wird der nav-back button nachgebildet und mit funktion versehen-->
+        <button style="margin-left: -8px; margin-top: 0px; color: #D9D9D9" class="button button-icon ion-arrow-left-c"
+                ng-click="qlCtrl.goToModuleList()"></button>
+    </ion-nav-buttons>
+    <ion-content class="has-header">
+        <div class="list">
+            <div class="item item-divider">
+                {{questionList[0].category}}
+            </div>
+            <a href="#/questionview/{{question.id}}" style="text-decoration: none;"
+               ng-repeat="question in questionList">
+                <div class="card">
+                    <div class="item item-text-wrap">
+                        <div class="row">
+                            <div class="col col-50">
+                                <div class="item item-image">
+                                    <img ng-src="{{question.imageLink}}">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <ul class="list">
+                                    <li class="item" style="padding-top: 5px;padding-bottom: 5px;">
+                                        <i class="icon ion-ios7-arrow-forward"> {{question.options[0]['option']}} </i>
+                                    </li>
+                                    <li class="item" style="padding-top: 5px;padding-bottom: 5px;">
+                                        <i class="icon ion-ios7-arrow-forward"> {{question.options[1]['option']}} </i>
+                                    </li>
+                                    <li class="item" style="padding-top: 5px;padding-bottom: 5px;">
+                                        <i class="icon ion-ios7-arrow-forward"> {{question.options[2]['option']}} </i>
+                                    </li>
+                                    <li class="item" style="padding-top: 5px;padding-bottom: 5px;">
+                                        <i class="icon ion-ios7-arrow-forward"> {{question.options[3]['option']}} </i>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <!-- <a href="#/questionview" style="text-decoration: none;">
+            <div class="card">
+            <div class="item item-text-wrap">
+            <div class="row">
+            <div class="col col-50">
+            <div class="item item-image">
+            <img src="http://placehold.it/640x480">
+            </div>
+            </div>
+            <div class="col">
+            <ul class="list">
+            <li class="item" style="padding-top: 5px;padding-bottom: 5px;">
+            <i class="icon ion-ios7-arrow-forward"> Option A </i>
+            </li>
+            <li class="item" style="padding-top: 5px;padding-bottom: 5px;">
+            <i class="icon ion-ios7-arrow-forward"> Option B </i>
+            </li>
+            <li class="item" style="padding-top: 5px;padding-bottom: 5px;">
+            <i class="icon ion-ios7-arrow-forward"> Option C </i>
+            </li>
+            <li class="item" style="padding-top: 5px;padding-bottom: 5px;">
+            <i class="icon ion-ios7-arrow-forward"> Option D </i>
+            </li>
+            </ul>
+            </div>
+            </div>
+            </div>
+            </div>
+            </a>
+            </div>
+            <a href="#/questionview" style="text-decoration: none">
+            <div class="card">
+            <div class="item item-text-wrap">
+            <div class="row">
+            <div class="col col-50">
+            <div class="item item-image">
+            <img src="http://placehold.it/640x480">
+            </div>
+            </div>
+            <div class="col">
+            <ul class="list">
+            <li class="item" style="padding-top: 5px;padding-bottom: 5px;">
+            <i class="icon ion-ios7-arrow-forward"> Option A </i>
+            </li>
+            <li class="item" style="padding-top: 5px;padding-bottom: 5px;">
+            <i class="icon ion-ios7-arrow-forward"> Option B </i>
+            </li>
+            <li class="item" style="padding-top: 5px;padding-bottom: 5px;">
+            <i class="icon ion-ios7-arrow-forward"> Option C </i>
+            </li>
+            <li class="item" style="padding-top: 5px;padding-bottom: 5px;">
+            <i class="icon ion-ios7-arrow-forward"> Option D </i>
+            </li>
+            </ul>
+            </div>
+            </div>
+            </div>
+            </div>
+            </a>-->
+        </div>
+    </ion-content>
+    <div class="bar bar-footer bar-dark">
+        <!--<a href="#/questionview" style="text-decoration: none;">-->
+        <button class="button icon-pulling ion-play button-outline button-block button-assertive" style="margin: 0px"
+                ng-click="startQuizzMode()">
+            Start Quizz
+        </button>
+        <!--</a>-->
+    </div>
+</ion-view>
+<!--<ion-view title="Leistungen">
+<ion-nav-buttons side="right">
+<button class="button button-icon icon ion-more" ng-click="rlCtrl.openPopover($event)"></button>
+<button class="button button-icon icon ion-plus" ng-click="rlCtrl.addRecord()"></button>
+</ion-nav-buttons>
+<ion-content>
+<div class="item item-input-inset" ng-show="rlCtrl.searchActive">
+<label class="item-input-wrapper">
+<i class="icon ion-ios7-search placeholder-icon"></i>
+<input type="text" placeholder="Search" ng-model="rlCtrl.searchQuery">
+</label>
+<button class="button button-clear" style="min-height: inherit;line-height: inherit;"
+ng-click="rlCtrl.toggleSearch()">Cancel
+</button>
+</div>
+<ion-list>
+<ion-item class="item-text-wrap"
+ng-repeat="record in (rlCtrl.records | filter:rlCtrl.searchQuery |orderBy:['name']:false)"
+href="#/records/{{record.$id}}">
+<h2>{{record.name}}
+<div style="font-weight: 500;" class="text-right">{{record.mark}}%</div>
+<p>{{record.modulnr}} {{record.crp}}crp</p>
+</h2>
+<ion-option-button class="button-assertive"
+ng-click="rlCtrl.delete(record)">Löschen
+</ion-option-button>
+</ion-item>
+</ion-list>
+<!--Wenn kein Eintrag in der Liste existiert wird folgender Inhalt angezeigt.-->
+<!--<div class="card" ng-hide="rlCtrl.records.length">
+<div class="item item-text-wrap">
+Keine Leistung vorhanden.
+<button class="button button-block ion-plus button-light" ng-click="rlCtrl.addRecord()">
+Leistung anlegen
+</button>
+</div>
+</div>
+</ion-content>
+</ion-view>-->
