@@ -1,7 +1,9 @@
 angular.module('imagequizz').controller('QuestionListController',
-    function ($scope, $state, $stateParams, $rootScope, QuestionData) {
+    function ($scope, $state, $stateParams, $rootScope, QuestionData, StatData) {
         //Kategorie für die Anzeige Vorbereiten
         $scope.questions = QuestionData.findAll();
+        /*Statistiken vorher holen oder mit einer warte Methode versehen*/
+        $scope.stats = StatData.findAll();
         $scope.questionList = [];
         for (var i = 0; i < $scope.questions.length; i++) {
             if($scope.questions[i].category == $stateParams.id){

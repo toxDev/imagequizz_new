@@ -20,7 +20,7 @@ angular.module('imagequizz').controller('ModuleListController',
                     }
                 }
             }
-        }
+        };
 
         //Ende Code für Löschen von Modulen
 
