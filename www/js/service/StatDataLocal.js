@@ -13,7 +13,6 @@ angular.module('imagequizz').factory('StatDataLocal',
                 return stats;
             },
             findById: function (id) {
-                //return this.findAll().$getRecord(id);
                 var stats = this.findAll();
                 for(var i = 0; i < stats.length; i++){
                     if(stats[i].id == id){
@@ -22,7 +21,6 @@ angular.module('imagequizz').factory('StatDataLocal',
                 }
             },
             delete: function (id) {
-                //this.findAll().$remove(this.findById(id));
                 var stats = this.findAll();
                 for(var i = 0; i < stats.length; i++){
                     if(stats[i].id == id){
@@ -32,13 +30,11 @@ angular.module('imagequizz').factory('StatDataLocal',
                 localStorage.setItem('statistic',JSON.stringify(stats));
             },
             persist: function (stat) {
-                //this.findAll().$add(stat);
                 var stats = this.findAll();
                 stats.push(stat);
                 localStorage.setItem('statistic',JSON.stringify(stats));
             },
             update: function (stat) {
-                //this.findAll().$save(stat);
                 var stats = this.findAll();
                 for (var i = 0; i < stats.length; i++){
                     if(stats[i].id == stat.id){
