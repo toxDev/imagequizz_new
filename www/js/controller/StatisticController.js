@@ -1,8 +1,6 @@
 angular.module('imagequizz').controller('StatisticController',
     function ($scope, StatData, QuestionData, $ionicLoading, $timeout) {
 
-        
-
         //Daten Holen
         $scope.questions = QuestionData.findAll();
         $scope.stats = StatData.findAll();
@@ -17,6 +15,7 @@ angular.module('imagequizz').controller('StatisticController',
         //Timeout um zu warten bis die Daten vorhanden sind.
         $timeout(function () {
             $scope.hideLoadingIndicator = function () {
+                console.log("called");
                 $ionicLoading.hide();
             };
 
@@ -137,9 +136,5 @@ angular.module('imagequizz').controller('StatisticController',
             $scope.chartObjectColumn.cssStyle = "height:400px; width:100%;";
 
         }, 1000);
-
-
-
-
 }
 );

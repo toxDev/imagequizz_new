@@ -1,5 +1,6 @@
 angular.module('imagequizz').controller('SettingsController',
     function ($scope, $state, $ionicModal, QuestionImport, QuestionData, StatData, Stat) {
+
         //Code für das Importieren von Modulen
         this.addCategorys = function(){
             $scope.importModules = [];
@@ -98,5 +99,4 @@ angular.module('imagequizz').controller('SettingsController',
             $scope.closeResetStatModal();
         };
         //Ende Code Zurücksetzten der Kategorien
-
     });
