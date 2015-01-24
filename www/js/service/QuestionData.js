@@ -35,10 +35,14 @@ angular.module('imagequizz').factory('QuestionData',
                 } else {
                     QuestionDataLocal.persist(question);
                 }
-            }/*,
-             update: function (question) {
-             this.findAll().$save(question);
-             }*/
+            },
+            update: function (question) {
+                 if(sync){
+                     QuestionDataPersist.update(question);
+                 } else {
+                     QuestionDataLocal.update(question);
+                 }
+            }
         };
         return service;
     });

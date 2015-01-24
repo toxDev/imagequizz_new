@@ -1,5 +1,5 @@
 angular.module('imagequizz').factory('StatData',
-    function (StatDataPersist) {
+    function (StatDataPersist,StatDataLocal) {
 
         var sync = localStorage.getItem('sync');
         if(!sync){
