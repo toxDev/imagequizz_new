@@ -2,10 +2,10 @@ angular.module('imagequizz').factory('StatData',
     function (StatDataPersist,StatDataLocal) {
 
         var sync = localStorage.getItem('sync');
-        if(!sync){
+        /*if(!sync){
             localStorage.setItem('sync', 1);
             sync = 1;
-        }
+         }*/
 
         var service = {
             findAll: function () {
@@ -38,7 +38,17 @@ angular.module('imagequizz').factory('StatData',
                  } else {
                     StatDataLocal.update(stat);
                  }
-             }
+             },
+            setSync: function (set) {
+
+                if (set === 1) {
+                    localStorage.setItem('sync', 1);
+                    sync = 1;
+                } else {
+                    localStorage.setItem('sync', 0);
+                    sync = 0;
+                }
+            }
         };
         return service;
     });

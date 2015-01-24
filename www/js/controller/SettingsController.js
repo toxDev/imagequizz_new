@@ -1,5 +1,15 @@
 angular.module('imagequizz').controller('SettingsController',
     function ($scope, $state, $ionicModal, QuestionImport, QuestionData, StatData, Stat) {
+
+        //beim Aufruf des Controllers/Views wird geprüft ob sync an/aus ist
+
+        if (localStorage.getItem('sync') === 1) {
+            $scope.syncModel = {checked: true};
+        } else {
+            $scope.syncModel = {checked: false};
+        }
+
+
         //Code für das Importieren von Modulen
         this.addCategorys = function(){
             $scope.importModules = [];
@@ -36,7 +46,7 @@ angular.module('imagequizz').controller('SettingsController',
         };
 
         /**
-         *
+         * Funktion zum Importieren neuer Module.
          */
         this.importModules = function() {
             var importQuestions = QuestionImport.findAll();
@@ -102,4 +112,27 @@ angular.module('imagequizz').controller('SettingsController',
         };
         //Ende Code Zurücksetzten der Kategorien
 
+        /**
+         * Holt sich die aktuelle User ID aus dem lokal storage und gibt diese zurück
+         * @returns {*} die gesetzte user ID
+         */
+        $scope.getUID = function () {
+            return localStorage.getItem('sync');
+        };
+
+        //Code zum an und ausschalten der Firebase integration
+        $scope.syncDataChange = function () {
+            //$scope.syncModel.checked;
+
+            if ($scope.syncModel.checked === true) {
+                QuestionData.setSync(1);
+                StatData.setSync(1);
+            } else {
+                QuestionData.setSync(0);
+                StatData.setSync(0);
+            }
+        };
+
+
+        //Ende backup Code
     });

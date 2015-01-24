@@ -4,15 +4,15 @@
             <div class="card">
                 <div class="item item-divider">Statistik speichern
                 </div>
-                <ion-toggle style="text-align: left" toggle-class="toggle-calm" ng-model="cloudData.checked"
-                            ng-click="cloudDataChange()">
+                <ion-toggle style="text-align: left" toggle-class="toggle-calm" ng-model="syncModel.checked"
+                            ng-click="syncDataChange()">
                     Backup
                 </ion-toggle>
             </div>
             <div class="card">
                 <div class="item item-text-wrap">
-                    UserID: {{}} <br>
-                    Letzte Synchronisation: {{}}
+                    UserID: {{getUID()}} <br>
+                    Letztes Backup: {{}}
                 </div>
             </div>
             <button class="button button-block button-balanced button-outline" ng-click="stCtrl.addCategorys()">
