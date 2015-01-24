@@ -8,21 +8,14 @@
     <ion-content style="margin-bottom: -22px" on-swipe-left="nextQuestion()">
 
     <div style="margin: auto; height:{{actHeight-44}}px; background-color: white">
-        <img id="myimg" src={{questionList[cur].imageLink}} style="display:block; margin:20px auto 20px auto;max-width: 100%; box-shadow: 0px 0px 54px -8px rgba(0,0,0,0.75);; ">
+        <img id="myimg" src={{question.imageLink}} style="display:block; margin:20px auto 20px auto;max-width: 100%; box-shadow: 0px 0px 54px -8px rgba(0,0,0,0.75);; ">
 
         <div style="width: 100%; padding-left: 2%; padding-right: 2%;;
             background-color: #4d4d4d">
             <ion-list>
-                <style>
-                    .color {
-
-                        /*                            animation: blink 0.1s steps(5, start) infinite;
-                                                    -webkit-animation: blink 0.1s steps(5, start) infinite;*/
-                    }
-                </style>
                 <button class="button button-block button-outline button-light button"
-                        ng-click="testAnswer(option['option'])"
-                        ng-repeat="option in questionList[cur].options"
+                        ng-click="qCtrl.testAnswer(option['option'])"
+                        ng-repeat="option in question.options"
                         ng-class="{'button-balanced color':(option['option'] == rightAnswer), 'button-assertive button':(option['option'] == wrongAnswer)}">
                     {{option['option']}}
                 </button>

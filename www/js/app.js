@@ -1,6 +1,6 @@
 "use strict";
 angular.module('imagequizz', ['ionic', 'firebase', 'angular.filter'])
-    .config(function ($stateProvider, $urlRouterProvider) {
+    .config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
         $stateProvider
             .state('tabs', {
                 url: "/tab",
@@ -50,6 +50,9 @@ angular.module('imagequizz', ['ionic', 'firebase', 'angular.filter'])
                 controller: 'QuizzController as qCtrl'
             });
         $urlRouterProvider.otherwise("/tab/modules");
+
+        //Ionic Beta 14 - Fix Back Button Text (no text but icon)
+        $ionicConfigProvider.backButton.text('').icon('ion-arrow-left-c').previousTitleText(false);
     })
     .constant('FIREBASE_URL', 'https://imagequizz.firebaseio.com')
     .run(function($ionicPlatform) {

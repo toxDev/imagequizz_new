@@ -1,15 +1,24 @@
 angular.module('imagequizz').controller('QuestionController',
-    function ($ionicPopup, $scope, QuestionData, $stateParams, $document, $timeout, $ionicNavBarDelegate, $state) {
+    function ($ionicPopup, $scope, QuestionData, $stateParams, $document, $timeout, $ionicNavBarDelegate, $state, $ionicHistory) {
+        $timeout(function () {
+            $ionicNavBarDelegate.title("Frage");
+        }, 750);
+
         $scope.actHight = $document.innerHeight;
         //Frage für die Anzeige Vorbereiten
         $scope.questions = QuestionData.findAll();
-        $scope.question = null;
+        //$scope.question = null;
         for (var i = 0; i < $scope.questions.length; i++) {
             if($scope.questions[i].id == $stateParams.id){
                 $scope.question = $scope.questions[i];
                 break;
             }
         }
+/*        $scope.questions.forEach(function (item) {
+           if(item.id == $stateParams.id){
+               $scope.questionList = item;
+           }
+        });*/
         //Informationstext zur angezeigten Frage
         this.toggleInfo = function () {
             var popup = $ionicPopup.alert({
@@ -52,7 +61,7 @@ angular.module('imagequizz').controller('QuestionController',
                 result = 'Leider Falsch';
             }
             $timeout(function () {
-                //$state.go('question_lists');
+                $ionicHistory.goBack();
             }, 2000)
         };
     }

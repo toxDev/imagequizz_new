@@ -31,10 +31,14 @@ angular.module('imagequizz').factory('StatData',
                 } else {
 
                 }
-            }/*,
-             update: function (question) {
-             this.findAll().$save(question);
-             }*/
+            },
+             update: function (stat) {
+                 if(sync){
+                     StatDataPersist.update(stat);
+                 } else {
+
+                 }
+             }
         };
         return service;
     });
