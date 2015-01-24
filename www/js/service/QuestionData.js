@@ -1,5 +1,5 @@
 angular.module('imagequizz').factory('QuestionData',
-    function (QuestionDataPersist) {
+    function (QuestionDataPersist, QuestionDataLocal) {
 
         var sync = localStorage.getItem('sync');
         if(!sync){
@@ -19,21 +19,21 @@ angular.module('imagequizz').factory('QuestionData',
                 if(sync){
                     QuestionDataPersist.findById(id);
                 } else {
-
+                    QuestionDataLocal.findById(id);
                 }
             },
             delete: function (id) {
                 if(sync){
                     QuestionDataPersist.delete(id);
                 } else {
-
+                    QuestionDataLocal.delete(id);
                 }
             },
             persist: function (question) {
                 if(sync){
                     QuestionDataPersist.persist(question);
                 } else {
-
+                    QuestionDataLocal.persist(question);
                 }
             }/*,
              update: function (question) {

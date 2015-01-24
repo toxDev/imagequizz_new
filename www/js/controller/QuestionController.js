@@ -31,9 +31,9 @@ angular.module('imagequizz').controller('QuestionController',
         };
         //Prüft die gegebene Antwort auf Korrektheit
         this.testAnswer = function (answer) {
-            var correctAnswer;
-            var count = 0;
-            var result;
+            var correctAnswer = '';
+            //var count = 0;
+            //var result;
 
             $scope.question.options.forEach(function (option) {
                 if (option['answer'] == true) {
@@ -48,7 +48,7 @@ angular.module('imagequizz').controller('QuestionController',
                         return;
                     }
                 });
-                result = 'Korrekte Antwort';
+                //result = 'Korrekte Antwort';
             } else {
                 $scope.question.options.forEach(function (option) {
                     if (option['option'] == answer) {
@@ -58,7 +58,7 @@ angular.module('imagequizz').controller('QuestionController',
                         $scope.rightAnswer = option['option'];
                     }
                 });
-                result = 'Leider Falsch';
+                //result = 'Leider Falsch';
             }
             $timeout(function () {
                 $ionicHistory.goBack();

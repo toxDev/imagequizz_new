@@ -12,7 +12,7 @@ angular.module('imagequizz').factory('StatData',
                 if(sync){
                     return StatDataPersist.findAll();
                 } else {
-
+                    return StatDataLocal.findAll();
                 }
             },/*,
              findById: function (id) {
@@ -22,21 +22,21 @@ angular.module('imagequizz').factory('StatData',
                 if(sync){
                     StatDataPersist.delete(id);
                 } else {
-
+                    StatDataLocal.delete(id);
                 }
             },
             persist: function (question) {
                 if(sync){
                     StatDataPersist.persist(question);
                 } else {
-
+                    StatDataLocal.persist(question);
                 }
             },
              update: function (stat) {
                  if(sync){
                      StatDataPersist.update(stat);
                  } else {
-
+                    StatDataLocal.update(stat);
                  }
              }
         };
