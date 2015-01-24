@@ -14,19 +14,16 @@ angular.module('imagequizz').factory('QuestionDataLocal',
             findById: function (id) {
                 //this.findAll().$getRecord(id);
                 var questions = this.findAll();
-                var question;
-                for (var i = 1; i < questions.length;i++){
+                for (var i = 0; i < questions.length;i++){
                     if(questions[i].id == id){
-                        question = questions[i];
-                        break;
+                        return questions[i];
                     }
                 }
-                return question;
             },
             delete: function (id) {
                 //this.findAll().$remove(this.findById(id));
                 var questions = this.findAll();
-                for (var i = 1; i < questions.length; i++){
+                for (var i = 0; i < questions.length; i++){
                     if(questions[i].id == id){
                         questions.splice(i,1);
                         break;
@@ -43,7 +40,7 @@ angular.module('imagequizz').factory('QuestionDataLocal',
             update: function (question) {
                 //this.findAll().$save(question);
                 var questions = this.findAll();
-                for (var i = 1; i < questions.length; i++){
+                for (var i = 0; i < questions.length; i++){
                     if(questions[i].id == question.id){
                         questions[i] = question;
                         break;
