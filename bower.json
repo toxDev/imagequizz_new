@@ -6,6 +6,7 @@
   },
   "dependencies": {
     "angularfire": "~0.9.1",
-    "angular-filter": "~0.5.2"
+    "angular-filter": "~0.5.2",
+    "angular-google-chart": "~0.0.11"
   }
 }

@@ -1,5 +1,5 @@
 "use strict";
-angular.module('imagequizz', ['ionic', 'firebase', 'angular.filter'])
+angular.module('imagequizz', ['ionic', 'firebase', 'angular.filter', 'googlechart'])
     .config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
         $stateProvider
             .state('tabs', {

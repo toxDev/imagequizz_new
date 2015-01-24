@@ -1,5 +1,7 @@
 angular.module('imagequizz').controller('QuestionListController',
     function ($scope, $state, $stateParams, $rootScope, $ionicPopup, QuestionData, StatData) {
+        //Referenz auf den Controller
+        $scope.self = this;
         //Kategorie für die Anzeige Vorbereiten
         $scope.questions = QuestionData.findAll();
         /*Statistiken vorher holen oder mit einer warte Methode versehen*/
@@ -37,7 +39,7 @@ angular.module('imagequizz').controller('QuestionListController',
                 });
                 popup.then(function (res) {
                     if (res) {
-                        this.resetStat();
+                        $scope.self.resetStat();
                         $state.go('question_view_quizz', {id: $stateParams.id});
                     }
                 });

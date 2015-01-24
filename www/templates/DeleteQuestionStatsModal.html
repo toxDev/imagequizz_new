@@ -1,0 +1,28 @@
+<ion-modal-view>
+    <div class="bar bar-header bar-dark">
+        <h1 class="title">Kategorien zurücksetzen</h1>
+        <button class="button button-icon icon ion-ios7-close close-modal"
+                ng-click="closeResetStatModal()">
+        </button>
+    </div>
+    <ion-content class="has-header">
+        <ion-list can-swipe="true">
+            <ion-item class="item-text-wrap animation">
+                <ion-checkbox ng-repeat="module in modules | unique:'category'" ng-model="module.status" ng-checked="module.status">
+                    {{module.category}}
+                </ion-checkbox>
+            </ion-item>
+        </ion-list>
+        <div class="card" ng-hide="modules.length">
+            <a class="item item-icon-left">
+                <i class="icon ion-heart-broken"></i>
+                Keine gelernten Karten gefunden!
+            </a>
+        </div>
+    </ion-content>
+    <ion-footer-bar class="bar-assertive">
+        <div class="button-bar">
+            <button class="button button-clear" ng-click="stCtrl.resetLearnedCards()">Karten zurücksetzen</button>
+        </div>
+    </ion-footer-bar>
+</ion-modal-view>

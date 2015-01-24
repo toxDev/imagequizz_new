@@ -2,7 +2,6 @@ angular.module('imagequizz').controller('SettingsController',
     function ($scope, $state, $ionicModal, QuestionImport, QuestionData, StatData, Stat) {
         //Code für das Importieren von Modulen
         this.addCategorys = function(){
-            //$scope.importModules = QuestionImport.findAll();
             $scope.importModules = [];
             var importQuestions = QuestionImport.findAll();
             var questions = QuestionData.findAll();
@@ -24,7 +23,6 @@ angular.module('imagequizz').controller('SettingsController',
         };
 
         $ionicModal.fromTemplateUrl('templates/ImportModulesModal.html', {
-            id: '1',
             scope: $scope,
             backdropClickToClose: false,
             animation: 'slide-in-up',
@@ -53,5 +51,52 @@ angular.module('imagequizz').controller('SettingsController',
             $state.go('tabs.home');
         };
         //Ende Code für Modulimport
+
+        //Code zum Zurücksetzten der Kategorien (gelernte Karten)
+        this.stats = StatData.findAll();
+        $scope.questionList = QuestionData.findAll();
+
+        this.resetStats = function () {
+            $scope.modules = [];
+            this.stats.forEach(function (stat) {
+                $scope.questionList.forEach(function (question) {
+                    if(stat.questionID === question.id  && stat.actRightSeries > 5){
+                        question.status = false;
+                        $scope.modules.push(question);
+                    }
+                })
+            });
+          $scope.resetStatModal.show();
+        };
+
+        $ionicModal.fromTemplateUrl('templates/DeleteQuestionStatsModal.html', {
+            scope: $scope,
+            backdropClickToClose: false,
+            animation: 'slide-in-up',
+            focusFirstInput: true
+        }).then(function (modal) {
+            $scope.resetStatModal = modal;
+        });
+
+        $scope.closeResetStatModal = function() {
+            $scope.resetStatModal.hide();
+        };
+
+        this.resetLearnedCards = function(){
+            for (var i = 0; i < $scope.modules.length; i++) {
+                if($scope.modules[i].status){
+                    this.stats.forEach(function (stat) {
+                        $scope.questionList.forEach(function (question) {
+                            if (stat.questionID === question.id && question.category == $scope.modules[i].category && stat.actRightSeries > 5) {
+                                stat.actRightSeries = 0;
+                                StatData.update(stat);
+                            }
+                        })
+                    });
+                }
+            }
+            $scope.closeResetStatModal();
+        };
+        //Ende Code Zurücksetzten der Kategorien
 
     });
