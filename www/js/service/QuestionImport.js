@@ -1,3 +1,6 @@
+/**
+ * TODO: comment
+ */
 angular.module('imagequizz').factory('QuestionImport',
     function ($http) {
 
@@ -5,6 +8,7 @@ angular.module('imagequizz').factory('QuestionImport',
         var modules = [];
         var promise = $http.get(url);
 
+        //Daten vom Server holen und auf dessen Erfolg warten
         promise.success(function (data, status) {
             // status 200 == ok new data
             if (status == 200 && angular.isArray(data)) {
@@ -17,6 +21,10 @@ angular.module('imagequizz').factory('QuestionImport',
 
 
         var service = {
+            /**
+             * Holt die zu importierenden Module aus dem LocalStorage und gibt diese zurück
+             * @returns {*} array der zu importierenden Module
+             */
             findAll: function () {
                 return JSON.parse(localStorage.getItem('question_import'));
             }

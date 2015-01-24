@@ -35,6 +35,9 @@ angular.module('imagequizz').controller('SettingsController',
             $scope.questionImportModal.hide();
         };
 
+        /**
+         *
+         */
         this.importModules = function() {
             var importQuestions = QuestionImport.findAll();
             for (var i = 0; i < $scope.importModules.length; i++) {
