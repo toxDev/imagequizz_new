@@ -59,7 +59,7 @@ angular.module('imagequizz').controller('QuizzController',
                     title: 'Rundenstatistik',
                     template: 'Bearbeitete Fragen: '+$scope.workedQuestionCount +'<br><hr>Korrekt beantwortet: '+$scope.correctAnswersCount+'<br>Falsch beantwortet: '+$scope.wrongAnswerCount+'<hr>Gelernte Karten: '+$scope.learnedQuestionCount
                 });
-                categoryCompletePopup.then(function(res) {
+                categoryCompletePopup.then(function() {
                     $ionicHistory.goBack();
                 })
             }
@@ -71,6 +71,7 @@ angular.module('imagequizz').controller('QuizzController',
 
         this.testAnswer = function (answer) {
             //Stat zur aktuellen Frage suchen
+            var correctAnswer = '';
             var currentStat = {};
             this.stats.forEach(function (stat) {
                if(stat.questionID == $scope.question.id){
@@ -123,7 +124,7 @@ angular.module('imagequizz').controller('QuizzController',
             //Resultat anzeigen und nächste Frage holen.
             $timeout(function () {
                 $scope.wrongAnswer = "";
-                $scope.rightAnswerAnswer = "";
+                $scope.rightAnswer = "";
                 $scope.nextQuestion();
             }, 1000);
         }
