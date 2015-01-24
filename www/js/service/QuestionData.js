@@ -1,3 +1,6 @@
+/**
+ * TODO: comment
+ */
 angular.module('imagequizz').factory('QuestionData',
     function (QuestionDataPersist, QuestionDataLocal) {
 
@@ -7,38 +10,44 @@ angular.module('imagequizz').factory('QuestionData',
             sync = 1;
          }*/
 
+        /**
+         * TODO: comment
+         * @type {{findAll: Function, findById: Function, delete: Function, persist: Function, update: Function, setSync: Function}}
+         */
         var service = {
             findAll: function () {
                 console.log(sync);
                 if(sync){
+                    console.log('ich bin im persist');
                     return QuestionDataPersist.findAll();
                 } else {
+                    console.log('ich bin lokal');
                     return QuestionDataLocal.findAll();
                 }
             },
             findById: function (id) {
-                if(sync){
+                if (sync === 1) {
                     QuestionDataPersist.findById(id);
                 } else {
                     QuestionDataLocal.findById(id);
                 }
             },
             delete: function (id) {
-                if(sync){
+                if (sync === 1) {
                     QuestionDataPersist.delete(id);
                 } else {
                     QuestionDataLocal.delete(id);
                 }
             },
             persist: function (question) {
-                if(sync){
+                if (sync === 1) {
                     QuestionDataPersist.persist(question);
                 } else {
                     QuestionDataLocal.persist(question);
                 }
             },
             update: function (question) {
-                 if(sync){
+                if (sync === 1) {
                      QuestionDataPersist.update(question);
                  } else {
                      QuestionDataLocal.update(question);

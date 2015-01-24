@@ -1,11 +1,17 @@
 /**
- * Created by Andreas on 22.01.2015.
+ * Der ModuleListController kümmert sich um die Anzeige und das Löschen der Kategorien, die man importiert hat.
  */
 "use strict";
 angular.module('imagequizz').controller('ModuleListController',
-    function ($scope, $state, QuestionData, StatData) {
+    function ($scope, $state, QuestionData, StatData, $window) {
+        //$window.location.reload(true);
         //Productive Code
-        $scope.questions = QuestionData.findAll();
+
+        this.loadList = function () {
+            $state.reload();
+            return QuestionData.findAll();
+        };
+        $scope.questions = this.loadList();
 
         //Code für das Importieren von Modulen
         this.deleteCategory = function (category) {
@@ -21,7 +27,6 @@ angular.module('imagequizz').controller('ModuleListController',
                 }
             }
         };
-
         //Ende Code für Löschen von Modulen
 
         //Wechselt zum Settings Tab

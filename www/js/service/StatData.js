@@ -9,7 +9,7 @@ angular.module('imagequizz').factory('StatData',
 
         var service = {
             findAll: function () {
-                if(sync){
+                if (sync === 1) {
                     return StatDataPersist.findAll();
                 } else {
                     return StatDataLocal.findAll();
@@ -19,21 +19,21 @@ angular.module('imagequizz').factory('StatData',
              return this.findAll().$getRecord(id);
              },*/
             delete: function (id) {
-                if(sync){
+                if (sync === 1) {
                     StatDataPersist.delete(id);
                 } else {
                     StatDataLocal.delete(id);
                 }
             },
             persist: function (question) {
-                if(sync){
+                if (sync === 1) {
                     StatDataPersist.persist(question);
                 } else {
                     StatDataLocal.persist(question);
                 }
             },
              update: function (stat) {
-                 if(sync){
+                 if (sync === 1) {
                      StatDataPersist.update(stat);
                  } else {
                     StatDataLocal.update(stat);

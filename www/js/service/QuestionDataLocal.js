@@ -1,5 +1,12 @@
+/**
+ *TODO: comment
+ */
 angular.module('imagequizz').factory('QuestionDataLocal',
     function () {
+        /**
+         * TODO: comment
+         * @type {{findAll: Function, findById: Function, delete: Function, persist: Function, update: Function}}
+         */
         var service = {
             findAll: function () {
                 var questions = localStorage.getItem('questions');

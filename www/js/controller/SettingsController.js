@@ -1,8 +1,15 @@
+/**
+ * Der SettingsController ist zuständig für den SettingsView der App. Er kümmert sich zum Beispiel um die Abhandlung
+ * der beiden Modale und ihrer Funktionen. Desweiteren kann man mit diesm Controller weitere Kategorien(Module) hinzufügen,
+ * die Statistiken zurücksetzen und die Benutzerdaten über ein Firebase backend sichern.
+ *
+ * @author <Florian Kolb>
+ * @email <florian.kolb@mni.thm.de>
+ */
 angular.module('imagequizz').controller('SettingsController',
     function ($scope, $state, $ionicModal, QuestionImport, QuestionData, StatData, Stat) {
 
         //beim Aufruf des Controllers/Views wird geprüft ob sync an/aus ist
-
         if (localStorage.getItem('sync') === 1) {
             $scope.syncModel = {checked: true};
         } else {
@@ -95,6 +102,9 @@ angular.module('imagequizz').controller('SettingsController',
             $scope.resetStatModal.hide();
         };
 
+        /**
+         *
+         */
         this.resetLearnedCards = function(){
             for (var i = 0; i < $scope.modules.length; i++) {
                 if($scope.modules[i].status){
@@ -120,7 +130,10 @@ angular.module('imagequizz').controller('SettingsController',
             return localStorage.getItem('sync');
         };
 
-        //Code zum an und ausschalten der Firebase integration
+        /**
+         * Die Funktion syncDataChange fragt den Wert der Checkbox ab und bei
+         * einer änderung dieses Wertes, wir die variable "sync" dementsprechend geändert.
+         */
         $scope.syncDataChange = function () {
             //$scope.syncModel.checked;
 
@@ -132,7 +145,5 @@ angular.module('imagequizz').controller('SettingsController',
                 StatData.setSync(0);
             }
         };
-
-
         //Ende backup Code
     });
