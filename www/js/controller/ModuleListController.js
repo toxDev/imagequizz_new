@@ -1,5 +1,10 @@
 /**
- * Created by Andreas on 22.01.2015.
+ * Der ModuleListController kümmert sich um die Anzeige und das Löschen der Kategorien, die man importiert hat.
+ *
+ * @author Andreas Ebner, <andreas.ebner@mni.thm.de>
+ * @author Florian Kolb, <florian.kolb@mni.thm.de>
+ * @author Julian Schmitt, <julian.schmitt.mni.thm.de>
+ *
  */
 "use strict";
 angular.module('imagequizz').controller('ModuleListController',
@@ -52,5 +57,5 @@ angular.module('imagequizz').controller('ModuleListController',
             }
             this.searchActive = !this.searchActive;
         };
-
+        //Ende der suche
     });

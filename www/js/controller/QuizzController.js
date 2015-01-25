@@ -1,3 +1,13 @@
+/**
+ *
+ * Der QuizzController kümmert sich um die korrekte Logik im QuizzModus. Er holt sich immer die nächste Frage und prüft
+ * die Eingabe des benutzers auf richtigkeit.
+ *
+ * @author Andreas Ebner, <andreas.ebner@mni.thm.de>
+ * @author Florian Kolb, <florian.kolb@mni.thm.de>
+ * @author Julian Schmitt, <julian.schmitt.mni.thm.de>
+ *
+ */
 angular.module('imagequizz').controller('QuizzController',
     function (QuestionData, StatData, $ionicNavBarDelegate, $scope, $document, $ionicPopup, $timeout, $stateParams, $ionicHistory) {
         //Ermittelt die aktuelle höhe des Dokuemnts für den View
@@ -22,7 +32,9 @@ angular.module('imagequizz').controller('QuizzController',
         //Nicht gelernte Fragen
         $scope.questionList = [];
 
-        //Suche nach den zu lernenden Fragen
+        /**
+         * Suche nach den zu lernenden Fragen
+         */
         this.stats.forEach(function (stat) {
             $scope.questions.forEach(function (question) {
                 // Wenn passende Statistik gefunden ist, die Kategorie übereinstimmt und Frage nicht gelernt ist.
@@ -38,7 +50,9 @@ angular.module('imagequizz').controller('QuizzController',
             $ionicNavBarDelegate.title($scope.act+1 + "/" + $scope.questionList.length);
         }, 750);
 
-        //Zeigt zu einer Frage für 2500ms den in der Frage hinterlegten Infotext an
+        /**
+         * Zeigt zu einer Frage für 2500ms den in der Frage hinterlegten Infotext an
+         */
         this.toggleInfo = function () {
             var popup = $ionicPopup.alert({
                 title: 'Information',
@@ -49,7 +63,9 @@ angular.module('imagequizz').controller('QuizzController',
             }, 2500);
         };
 
-        //Holen der nächsten Frage
+        /**
+         * Holen der nächsten Frage
+         */
         $scope.nextQuestion = function () {
             if($scope.cur < $scope.questionList.length){
                 $scope.question = $scope.questionList[$scope.cur++];
@@ -68,7 +84,10 @@ angular.module('imagequizz').controller('QuizzController',
         //Holen der ersten Frage. (Mindestens eine Frage verfügbar(sichergestellt durch QuestionListController)
         $scope.nextQuestion();
 
-
+        /**
+         * Testet die entscheidung des Benutzers ob die Antwort korrekt ist oder nicht
+         * @param answer die es zu überprüfen gilt
+         */
         this.testAnswer = function (answer) {
             //Stat zur aktuellen Frage suchen
             var correctAnswer = '';
@@ -128,5 +147,6 @@ angular.module('imagequizz').controller('QuizzController',
                 $scope.nextQuestion();
             }, 1000);
         }
+        //Ende des Codes zum testen der Antwort
     }
 );

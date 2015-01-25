@@ -1,3 +1,12 @@
+/**
+ *
+ *  Der QuestionController ist für die Anzeige einer gewählten Frage zuständig. Diese wird auch vom QuizzModus benutzt.
+ *
+ * @author Andreas Ebner, <andreas.ebner@mni.thm.de>
+ * @author Florian Kolb, <florian.kolb@mni.thm.de>
+ * @author Julian Schmitt, <julian.schmitt.mni.thm.de>
+ *
+ */
 angular.module('imagequizz').controller('QuestionController',
     function ($ionicPopup, $scope, QuestionData, $stateParams, $document, $timeout, $ionicNavBarDelegate, $state, $ionicHistory) {
         $timeout(function () {
@@ -19,7 +28,11 @@ angular.module('imagequizz').controller('QuestionController',
                $scope.questionList = item;
            }
         });*/
-        //Informationstext zur angezeigten Frage
+
+
+        /**
+         * Informationstext zur angezeigten Frage
+         */
         this.toggleInfo = function () {
             var popup = $ionicPopup.alert({
                 title: 'Information',
@@ -29,7 +42,10 @@ angular.module('imagequizz').controller('QuestionController',
                 popup.close();
             }, 2500);
         };
-        //Prüft die gegebene Antwort auf Korrektheit
+        /**
+         * Prüft die gegebene Antwort auf Korrektheit
+         * @param answer die zu überprüfende Antwort
+         */
         this.testAnswer = function (answer) {
             var correctAnswer = '';
             //var count = 0;

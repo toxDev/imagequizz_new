@@ -1,3 +1,12 @@
+/**
+ *
+ *  Der QuestionListController ist zuständig für die Anzeige der jeweiligen Fragen einer Kategorie.
+ *
+ * @author Andreas Ebner, <andreas.ebner@mni.thm.de>
+ * @author Florian Kolb, <florian.kolb@mni.thm.de>
+ * @author Julian Schmitt, <julian.schmitt.mni.thm.de>
+ *
+ */
 angular.module('imagequizz').controller('QuestionListController',
     function ($scope, $state, $stateParams, $rootScope, $ionicPopup, QuestionData, StatData) {
         //Referenz auf den Controller
@@ -14,11 +23,17 @@ angular.module('imagequizz').controller('QuestionListController',
         }
 
         //$rootScope.$viewHistory.backView = null;
+
+        /**
+         * Wechselt beim klick auf den "Zurück-Pfeil" den View auf die ModuleList
+         */
         this.goToModuleList = function () {
             $state.go('tabs.home');
         };
 
-        //Startet das Quizz und prüft ob noch nicht gelernte Karten vorhanden sind.
+        /**
+         * Startet das Quizz und prüft ob noch nicht gelernte Karten vorhanden sind.
+         */
         this.startQuizzMode = function () {
             var learnedQuestionCounter = 0;
             this.stats.forEach(function (stat) {
@@ -47,7 +62,9 @@ angular.module('imagequizz').controller('QuestionListController',
                 $state.go('question_view_quizz', {id: $stateParams.id});
             }
         };
-        //Zurücksetzten der Statistik (aktuell serie-richtig = 0)
+        /**
+         * Zurücksetzten der Statistik (aktuell serie-richtig = 0)
+         */
         this.resetStat = function () {
             this.stats.forEach(function (stat) {
                 $scope.questionList.forEach(function (question) {

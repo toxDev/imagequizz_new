@@ -1,7 +1,19 @@
+/**
+ *
+ * Der StatisticController ist für die Anzeige und die aktualisierung der Statistiken dar. Im Controller wird auch ein
+ * Loadingscreen inistallisiert, der den Benutzer anzeigt das die Daten geladen werden.
+ *
+ * @author Andreas Ebner, <andreas.ebner@mni.thm.de>
+ * @author Florian Kolb, <florian.kolb@mni.thm.de>
+ * @author Julian Schmitt, <julian.schmitt.mni.thm.de>
+ *
+ */
 angular.module('imagequizz').controller('StatisticController',
     function ($scope, StatData, QuestionData, $ionicLoading, $timeout) {
 
-        //Wenn die Modulliste aufgerufen wird, werden die Daten neu geladen
+        /**
+         * Wenn die Modulliste aufgerufen wird, werden die Daten neu geladen
+         */
         $scope.$on('$stateChangeStart',
             function(event, toState, toParams, fromState, fromParams){
                 if(toState.url == "/stats"){
@@ -11,11 +23,13 @@ angular.module('imagequizz').controller('StatisticController',
                 }
             });
 
-        //Daten Holen
+        //Alle Daten holen
         $scope.questions = QuestionData.findAll();
         $scope.stats = StatData.findAll();
 
-
+        /**
+         * Lade bildschirm um den Benutzer am schnellen umschalten zu hindern
+         */
         $scope.loadingIndicator = $ionicLoading.show({
             template: 'Lade Statistik<br><i class="icon ion-loading-a"></i>',
             animation: 'fade-in',
@@ -23,6 +37,9 @@ angular.module('imagequizz').controller('StatisticController',
             maxWidth: 200,
             showDelay: 500
         });
+        /**
+         * Funktion zum laden der Statistiken. Wenn diese fertig geladen sind, dann blendet sich der Loadingscreen aus.
+         */
         $scope.loadStatistic = function () {
         //Timeout um zu warten bis die Daten vorhanden sind.
         $timeout(function () {
@@ -92,7 +109,7 @@ angular.module('imagequizz').controller('StatisticController',
                 chartRows.push({c: [{v: categorys[i]}, {v: category_right}, {v: category_wrong}]})
             }
 
-            //PieChart
+            //Anfang des PieChart zur graphischen Anzeige der Statistiken
             $scope.chartObject = {};
             $scope.chartObject = {"type": "PieChart"}
             $scope.chartObject.data = {
@@ -143,7 +160,7 @@ angular.module('imagequizz').controller('StatisticController',
                 'isStacked': 'true',
                 'legend': {position: 'bottom', textStyle: {color: 'black', fontSize: 16}}
             }
-
+            //Ende der graphischen Anzeige
             $scope.chartObjectColumn.cssStyle = "height:400px; width:100%;";
 
         }, 1000);}
