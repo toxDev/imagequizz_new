@@ -15,7 +15,7 @@ angular.module('imagequizz').factory('StatDataLocal',
             findById: function (id) {
                 var stats = this.findAll();
                 for(var i = 0; i < stats.length; i++){
-                    if(stats[i].id == id){
+                    if(stats[i].questionID == id){
                         return stats[i];
                     }
                 }
@@ -23,7 +23,7 @@ angular.module('imagequizz').factory('StatDataLocal',
             delete: function (id) {
                 var stats = this.findAll();
                 for(var i = 0; i < stats.length; i++){
-                    if(stats[i].id == id){
+                    if(stats[i].questionID == id){
                         stats.splice(i,1);
                     }
                 }
@@ -37,7 +37,7 @@ angular.module('imagequizz').factory('StatDataLocal',
             update: function (stat) {
                 var stats = this.findAll();
                 for (var i = 0; i < stats.length; i++){
-                    if(stats[i].id == stat.id){
+                    if(stats[i].questionID == stat.questionID){
                         stats[i] = stat;
                         break;
                     }

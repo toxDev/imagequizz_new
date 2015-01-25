@@ -14,7 +14,13 @@ angular.module('imagequizz').factory('QuestionDataPersist',
                 return this.findAll().$getRecord(id);
             },
             delete: function (id) {
-                this.findAll().$remove(this.findById(id));
+                var questions = this.findAll();
+                for (var i = 0; i < questions.length; i++) {
+                    if(questions[i].id == id){
+                        questions.$remove(this.findById(questions[i].$id));
+                    }
+                }
+                //this.findAll().$remove(this.findById(id));
             },
             persist: function (question) {
                 this.findAll().$add(question);

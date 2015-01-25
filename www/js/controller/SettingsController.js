@@ -1,5 +1,12 @@
 angular.module('imagequizz').controller('SettingsController',
-    function ($scope, $state, $ionicModal, QuestionImport, QuestionData, StatData, Stat) {
+    function ($scope, $state, $ionicModal, QuestionImport, QuestionData, StatData, Stat, $ionicPopup) {
+
+        //beim Aufruf des Controllers/Views wird geprüft ob sync an/aus ist
+        if (localStorage.getItem('sync') == 1) {
+            $scope.syncModel = {checked: true};
+        } else {
+            $scope.syncModel = {checked: false};
+        }
 
         //Code für das Importieren von Modulen
         this.addCategorys = function(){
@@ -36,6 +43,9 @@ angular.module('imagequizz').controller('SettingsController',
             $scope.questionImportModal.hide();
         };
 
+        /**
+         * Funktion zum Importieren neuer Module.
+         */
         this.importModules = function() {
             var importQuestions = QuestionImport.findAll();
             for (var i = 0; i < $scope.importModules.length; i++) {
@@ -99,4 +109,66 @@ angular.module('imagequizz').controller('SettingsController',
             $scope.closeResetStatModal();
         };
         //Ende Code Zurücksetzten der Kategorien
+
+        /**
+         * Holt sich die aktuelle User ID aus dem lokal storage und gibt diese zurück
+         * @returns {*} die gesetzte user ID
+         */
+        $scope.getUID = function () {
+            return localStorage.getItem('sync');
+        };
+
+        //Code zum an und ausschalten der Firebase integration
+        $scope.userID = '-';
+        this.syncDataChange = function () {
+            if ($scope.syncModel.checked === true) {
+
+                $scope.data = {}
+
+                var myPopup = $ionicPopup.show({
+                    template: '<input type="password" ng-model="data.wifi" placeholder="{{userID}}">',
+                    title: 'Cloud aktivieren',
+                    subTitle: 'Wenn Sie bereits eine NutzerID haben geben Sie diese ein. Ansonsten wählen Sie weiter.<hr>Die offline Daten stehen im Onlinemodus nicht zur Verfügung!',
+                    scope: $scope,
+                    buttons: [
+                        { text: 'Abbrechen',
+                            onTap: function() {
+                                $scope.syncModel.checked = !$scope.syncModel.checked;
+                            }
+                        },
+                        {
+                            text: 'Weiter',
+                            type: 'button-positive',
+                            onTap: function() {
+                                localStorage.setItem('sync', 1);
+                                QuestionData.setSync(1);
+                                StatData.setSync(1);
+                            }
+                        }
+                    ]
+                });
+            } else {
+                var confirmPopup = $ionicPopup.confirm({
+                    title: 'Cloud deaktivieren',
+                    template: 'Möchten Sie die Synchronisation beenden und offline arbeiten?<hr>Die Clouddaten stehen offline nicht zur Verfügung!'
+                    //TO-DO Button an deutsches Layout anpassen
+                    /*                        buttons: [
+                     {text: 'Nein'},
+                     {text: 'Ja',type: 'button-positive'},
+                     ]*/
+                });
+                confirmPopup.then(function (res) {
+                    if (res) {
+                        localStorage.setItem('sync', 0);
+                        QuestionData.setSync(0);
+                        StatData.setSync(0);
+                    } else {
+                        $scope.syncModel.checked = !$scope.syncModel.checked;
+                    }
+                });
+            }
+        };
+
+
+        //Ende backup Code
     });

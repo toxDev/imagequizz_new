@@ -2,6 +2,8 @@ angular.module('imagequizz').factory('StatData',
     function (StatDataPersist,StatDataLocal) {
 
         var sync = localStorage.getItem('sync');
+
+        //Setzten des default Verhaltens wenn sync nicht im localstorage abgelegt ist.
         if(!sync){
             localStorage.setItem('sync', 1);
             sync = 1;
@@ -9,7 +11,7 @@ angular.module('imagequizz').factory('StatData',
 
         var service = {
             findAll: function () {
-                if(sync){
+                if(sync == 1){
                     return StatDataPersist.findAll();
                 } else {
                     return StatDataLocal.findAll();
@@ -19,26 +21,33 @@ angular.module('imagequizz').factory('StatData',
              return this.findAll().$getRecord(id);
              },*/
             delete: function (id) {
-                if(sync){
+                if(sync == 1){
                     StatDataPersist.delete(id);
                 } else {
                     StatDataLocal.delete(id);
                 }
             },
             persist: function (question) {
-                if(sync){
+                if(sync == 1){
                     StatDataPersist.persist(question);
                 } else {
                     StatDataLocal.persist(question);
                 }
             },
              update: function (stat) {
-                 if(sync){
+                 if(sync == 1){
                      StatDataPersist.update(stat);
                  } else {
                     StatDataLocal.update(stat);
                  }
-             }
+             },
+            setSync: function (set) {
+                if (set == 1) {
+                    sync = 1;
+                } else {
+                    sync = 0;
+                }
+            }
         };
         return service;
     });

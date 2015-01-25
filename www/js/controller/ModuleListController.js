@@ -7,19 +7,28 @@ angular.module('imagequizz').controller('ModuleListController',
         //Productive Code
         $scope.questions = QuestionData.findAll();
 
-        //Code für das Importieren von Modulen
+        //Wenn die Modulliste aufgerufen wird, werden die Daten neu geladen
+        $scope.$on('$stateChangeStart',
+            function(event, toState, toParams, fromState, fromParams){
+                if(toState.url == "/modules"){
+                    $scope.questions = QuestionData.findAll();
+                }
+            })
+
+        //Code für das Löschen von Modulen
         this.deleteCategory = function (category) {
             $scope.stats = StatData.findAll();
             for (var i = 0; i < $scope.questions.length; i++) {
                 if($scope.questions[i].category === category){
-                    QuestionData.delete($scope.questions[i].$id);
+                    QuestionData.delete($scope.questions[i].id);
                     for (var j = 0; j <  $scope.stats.length; j++) {
                         if($scope.questions[i].id ==  $scope.stats[j].questionID){
-                            StatData.delete($scope.stats[j].$id);
+                            StatData.delete($scope.stats[j].questionID);
                         }
                     }
                 }
             }
+            $state.reload();
         };
 
         //Ende Code für Löschen von Modulen

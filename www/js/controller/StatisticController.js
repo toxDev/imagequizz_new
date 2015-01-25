@@ -15,7 +15,6 @@ angular.module('imagequizz').controller('StatisticController',
         //Timeout um zu warten bis die Daten vorhanden sind.
         $timeout(function () {
             $scope.hideLoadingIndicator = function () {
-                console.log("called");
                 $ionicLoading.hide();
             };
 

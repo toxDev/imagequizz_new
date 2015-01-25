@@ -14,7 +14,13 @@ angular.module('imagequizz').factory('StatDataPersist',
                 return this.findAll().$getRecord(id);
             },
             delete: function (id) {
-                this.findAll().$remove(this.findById(id));
+                var stats = this.findAll();
+                for (var i = 0; i < stats.length; i++) {
+                    if(stats[i].questionID == id){
+                        stats.$remove(this.findById(stats[i].$id));
+                    }
+                }
+                //this.findAll().$remove(this.findById(id));
             },
             persist: function (stat) {
                 this.findAll().$add(stat);
