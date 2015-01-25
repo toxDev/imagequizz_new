@@ -1,3 +1,12 @@
+/**
+ * QuestionDataLocal ist zuständig für die lokale Speicherung aller importierten Fragen. Zu dem kümmert sich der Service
+ * auch noch um das löschen und upaten dieser Fragen.
+ *
+ * @author Andreas Ebner, <andreas.ebner@mni.thm.de>
+ * @author Florian Kolb, <florian.kolb@mni.thm.de>
+ * @author Julian Schmitt, <julian.schmitt.mni.thm.de>
+ *
+ */
 angular.module('imagequizz').factory('QuestionDataLocal',
     function () {
         var service = {

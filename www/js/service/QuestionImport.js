@@ -1,3 +1,12 @@
+/**
+ *
+ * QuestionImport holt sich alle Kategorien vom Server und stellt diese im Service Objekt zur Verfügung.
+ *
+ * @author Andreas Ebner, <andreas.ebner@mni.thm.de>
+ * @author Florian Kolb, <florian.kolb@mni.thm.de>
+ * @author Julian Schmitt, <julian.schmitt.mni.thm.de>
+ *
+ */
 angular.module('imagequizz').factory('QuestionImport',
     function ($http) {
 

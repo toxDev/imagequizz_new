@@ -1,3 +1,12 @@
+/**
+ * QuestionDataPersist ist zuständig für die Speicherung aller importierten Fragen auf Firebase. Zu dem kümmert sich
+ * der Service auch noch um das löschen und upaten dieser Fragen.
+ *
+ * @author Andreas Ebner, <andreas.ebner@mni.thm.de>
+ * @author Florian Kolb, <florian.kolb@mni.thm.de>
+ * @author Julian Schmitt, <julian.schmitt.mni.thm.de>
+ *
+ */
 angular.module('imagequizz').factory('QuestionDataPersist',
     function ($firebase, FIREBASE_URL) {
 

@@ -1,3 +1,12 @@
+/**
+ * StatDataPersist ist zuständig für die Speicherung aller statistiken zu den jeweiligen Fragen auf Firebase.
+ * Zudem kümmert sich der Service auch noch um das löschen und upaten dieser Statistiken.
+ *
+ * @author Andreas Ebner, <andreas.ebner@mni.thm.de>
+ * @author Florian Kolb, <florian.kolb@mni.thm.de>
+ * @author Julian Schmitt, <julian.schmitt.mni.thm.de>
+ *
+ */
 angular.module('imagequizz').factory('StatDataPersist',
     function ($firebase, FIREBASE_URL) {
 

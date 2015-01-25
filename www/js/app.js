@@ -1,3 +1,11 @@
+/**
+ * Die App.js ist zuständig für die korrekte Konfiguration der App.
+ *
+ * @author Andreas Ebner, <andreas.ebner@mni.thm.de>
+ * @author Florian Kolb, <florian.kolb@mni.thm.de>
+ * @author Julian Schmitt, <julian.schmitt.mni.thm.de>
+ *
+ */
 "use strict";
 angular.module('imagequizz', ['ionic', 'firebase', 'angular.filter', 'googlechart'])
     .config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
@@ -53,6 +61,7 @@ angular.module('imagequizz', ['ionic', 'firebase', 'angular.filter', 'googlechar
 
         //Ionic Beta 14 - Fix Back Button Text (no text but icon)
         $ionicConfigProvider.backButton.text('').icon('ion-arrow-left-c').previousTitleText(false);
+        //der ConfigProvider wird benötigt um die Tab Bar am unteren Rand zu fixieren
         $ionicConfigProvider.tabs.position('bottom');
     })
     .constant('FIREBASE_URL', 'https://imagequizz.firebaseio.com')
@@ -67,4 +76,4 @@ angular.module('imagequizz', ['ionic', 'firebase', 'angular.filter', 'googlechar
                 StatusBar.styleDefault();
             }
         });
-    })
+    });

@@ -1,3 +1,11 @@
+/**
+ * Das Model Question repräsentiert alle Eigenschaften einer Frage.
+ *
+ * @author Andreas Ebner, <andreas.ebner@mni.thm.de>
+ * @author Florian Kolb, <florian.kolb@mni.thm.de>
+ * @author Julian Schmitt, <julian.schmitt.mni.thm.de>
+ *
+ */
 'use strict';
 angular.module('imagequizz').factory('Question',
     function () {
