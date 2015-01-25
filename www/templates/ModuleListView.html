@@ -20,9 +20,9 @@
                 <div class="item item-divider">
                     <strong>{{devider.category.charAt(0)}}</strong>
                 </div>
-                <div ng-repeat="module in questions | filter:{category: mlCtrl.searchQuery} | filter:{category:devider.category.charAt(0)} | unique:'category'">
+                <div ng-repeat="module in questions | filter:{category: mlCtrl.searchQuery}|unique:'category'">
 
-                    <ion-item class="item-text-wrap animation"
+                    <ion-item ng-show="module.category.charAt(0) == devider.category.charAt(0)" class="item-text-wrap animation"
                               href="#/questionlist/{{module.category}}">
                         {{module.category}}
                         <ion-option-button class="button-assertive"
