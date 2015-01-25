@@ -53,6 +53,7 @@ angular.module('imagequizz', ['ionic', 'firebase', 'angular.filter', 'googlechar
 
         //Ionic Beta 14 - Fix Back Button Text (no text but icon)
         $ionicConfigProvider.backButton.text('').icon('ion-arrow-left-c').previousTitleText(false);
+        $ionicConfigProvider.tabs.position('bottom');
     })
     .constant('FIREBASE_URL', 'https://imagequizz.firebaseio.com')
     .run(function($ionicPlatform) {
