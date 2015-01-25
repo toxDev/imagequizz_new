@@ -1,5 +1,13 @@
 <ion-view title="Statistik">
     <ion-content class="has-header">
+        <div class="card" ng-hide="questions.length">
+            <div class="item item-divider">
+                Keine Kategorien vorhanden!
+            </div>
+            <div class="item item-text-wrap">
+                Importieren Sie Module um eine Statistik angezeigt zu bekommen.
+            </div>
+        </div>
         <div>
             <div google-chart on-ready="hideLoadingIndicator()" chart="chartObject"
                  style="{{chartObject.cssStyle}}"></div>

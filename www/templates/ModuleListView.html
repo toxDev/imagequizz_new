@@ -1,40 +1,37 @@
 <ion-view title="Kategorien">
     <ion-nav-buttons side="right">
-        <button class="button button-icon icon ion-ios7-search">
-            <!--ng-click="mlCtrl.toggleSearch()" ng-hide="mlCtrl.searchActive" href="#"-->
+        <button class="button button-icon icon ion-ios7-search"
+                ng-click="mlCtrl.toggleSearch()" ng-hide="mlCtrl.searchActive" href="#">
         </button>
     </ion-nav-buttons>
     <ion-content class="has-header">
+        <div class="item item-input-inset" ng-show="mlCtrl.searchActive">
+            <label class="item-input-wrapper">
+                <i class="icon ion-ios7-search placeholder-icon"></i>
+                <input type="text" placeholder="Suche" ng-model="mlCtrl.searchQuery">
+            </label>
+            <button class="button button-clear" style="min-height: inherit; line-height: inherit"
+                    ng-click="mlCtrl.toggleSearch()">Cancel
+            </button>
+        </div>
 
-
-
-        <!--<div ng-repeat="module in modules">{{module.category}}</div>-->
-
-
-        <!--        <div class="item item-divider"
-                     ng-repeat="module in filteredModules = (modules | filter:{category: mlCtrl.searchQuery} | unique: 'letter')">
-                    {{letter}}
+        <ion-list can-swipe="true">
+            <div ng-repeat="devider in questions | filter:{category: mlCtrl.searchQuery} | unique:'category' | unique:'category.charAt(0)' | orderBy:'category'">
+                <div class="item item-divider">
+                    <strong>{{devider.category.charAt(0)}}</strong>
                 </div>
-                &lt;!&ndash;unique: Filter für doppelte Einträge&ndash;&gt;
-                <ion-list can-swipe="true">
+                <div ng-repeat="module in questions | filter:{category: mlCtrl.searchQuery} | filter:{category:devider.category.charAt(0)} | unique:'category'">
+
                     <ion-item class="item-text-wrap animation"
-                              ng-repeat="module in filteredModules = (modules | filter:{category: mlCtrl.searchQuery} | unique:'category')"
                               href="#/questionlist/{{module.category}}">
                         {{module.category}}
                         <ion-option-button class="button-assertive"
-                                           ng-click="deleteCategory(module.category)">Löschen
+                                           ng-click="mlCtrl.deleteCategory(module.category)">Löschen
                         </ion-option-button>
                     </ion-item>
-                </ion-list>-->
-        <ion-list can-swipe="true">
-            <ion-item class="item-text-wrap animation"
-                      ng-repeat="module in questions | unique:'category'"
-                      href="#/questionlist/{{module.category}}">
-                {{module.category}}
-                <ion-option-button class="button-assertive"
-                                   ng-click="mlCtrl.deleteCategory(module.category)">Löschen
-                </ion-option-button>
-            </ion-item>
+                </div>
+            </div>
+
         </ion-list>
         <div class="card" ng-hide="questions.length">
             <div class="item item-text-wrap">

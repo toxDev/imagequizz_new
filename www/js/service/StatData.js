@@ -5,8 +5,8 @@ angular.module('imagequizz').factory('StatData',
 
         //Setzten des default Verhaltens wenn sync nicht im localstorage abgelegt ist.
         if(!sync){
-            localStorage.setItem('sync', 1);
-            sync = 1;
+            localStorage.setItem('sync', 0);
+            sync = 0;
         }
 
         var service = {
@@ -41,8 +41,9 @@ angular.module('imagequizz').factory('StatData',
                     StatDataLocal.update(stat);
                  }
              },
-            setSync: function (set) {
+            setSync: function (set, userid) {
                 if (set == 1) {
+                    StatDataPersist.setUID(userid);
                     sync = 1;
                 } else {
                     sync = 0;

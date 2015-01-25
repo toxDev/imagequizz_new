@@ -13,7 +13,7 @@ angular.module('imagequizz').controller('ModuleListController',
                 if(toState.url == "/modules"){
                     $scope.questions = QuestionData.findAll();
                 }
-            })
+            });
 
         //Code für das Löschen von Modulen
         this.deleteCategory = function (category) {
@@ -36,6 +36,21 @@ angular.module('imagequizz').controller('ModuleListController',
         //Wechselt zum Settings Tab
         this.goToSettings = function () {
             $state.go('tabs.settings');
+        };
+        //Code für die Suche nach Modulen
+        $scope.searchActive = false;
+        this.searchQuery = '';
+        if (localStorage.getItem('saveQuery')) {
+            this.searchActive = true;
+            this.searchQuery = JSON.parse(localStorage.getItem('saveQuery'));
+            localStorage.removeItem('saveQuery');
         }
+        ;
+        this.toggleSearch = function () {
+            if (this.searchActive) {
+                this.searchQuery = '';
+            }
+            this.searchActive = !this.searchActive;
+        };
 
     });

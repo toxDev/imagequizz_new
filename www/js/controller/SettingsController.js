@@ -119,14 +119,13 @@ angular.module('imagequizz').controller('SettingsController',
         };
 
         //Code zum an und ausschalten der Firebase integration
-        $scope.userID = '-';
+        $scope.userID = localStorage.getItem('userid') || '-';
         this.syncDataChange = function () {
             if ($scope.syncModel.checked === true) {
 
-                $scope.data = {}
-
+                $scope.data = {};
                 var myPopup = $ionicPopup.show({
-                    template: '<input type="password" ng-model="data.wifi" placeholder="{{userID}}">',
+                    template: '<input type="text" ng-model="data.uid" placeholder="{{userID}}">',
                     title: 'Cloud aktivieren',
                     subTitle: 'Wenn Sie bereits eine NutzerID haben geben Sie diese ein. Ansonsten wählen Sie weiter.<hr>Die offline Daten stehen im Onlinemodus nicht zur Verfügung!',
                     scope: $scope,
@@ -140,9 +139,15 @@ angular.module('imagequizz').controller('SettingsController',
                             text: 'Weiter',
                             type: 'button-positive',
                             onTap: function() {
+                                if($scope.data.uid == undefined){
+                                    $scope.data.uid = $scope.userID;
+                                } else {
+                                    $scope.userID = $scope.data.uid;
+                                }
+                                localStorage.setItem('userid', $scope.data.uid)
                                 localStorage.setItem('sync', 1);
-                                QuestionData.setSync(1);
-                                StatData.setSync(1);
+                                QuestionData.setSync(1, $scope.data.uid);
+                                StatData.setSync(1, $scope.data.uid);
                             }
                         }
                     ]
@@ -168,7 +173,6 @@ angular.module('imagequizz').controller('SettingsController',
                 });
             }
         };
-
 
         //Ende backup Code
     });

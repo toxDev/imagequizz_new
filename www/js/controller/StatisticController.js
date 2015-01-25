@@ -1,9 +1,20 @@
 angular.module('imagequizz').controller('StatisticController',
     function ($scope, StatData, QuestionData, $ionicLoading, $timeout) {
 
+        //Wenn die Modulliste aufgerufen wird, werden die Daten neu geladen
+        $scope.$on('$stateChangeStart',
+            function(event, toState, toParams, fromState, fromParams){
+                if(toState.url == "/stats"){
+                    $scope.questions = QuestionData.findAll();
+                    $scope.stats = StatData.findAll();
+                    $scope.loadStatistic();
+                }
+            });
+
         //Daten Holen
         $scope.questions = QuestionData.findAll();
         $scope.stats = StatData.findAll();
+
 
         $scope.loadingIndicator = $ionicLoading.show({
             template: 'Lade Statistik<br><i class="icon ion-loading-a"></i>',
@@ -12,6 +23,7 @@ angular.module('imagequizz').controller('StatisticController',
             maxWidth: 200,
             showDelay: 500
         });
+        $scope.loadStatistic = function () {
         //Timeout um zu warten bis die Daten vorhanden sind.
         $timeout(function () {
             $scope.hideLoadingIndicator = function () {
@@ -134,6 +146,7 @@ angular.module('imagequizz').controller('StatisticController',
 
             $scope.chartObjectColumn.cssStyle = "height:400px; width:100%;";
 
-        }, 1000);
+        }, 1000);}
+        $scope.loadStatistic();
 }
 );
