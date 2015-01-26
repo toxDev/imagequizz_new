@@ -86,6 +86,7 @@ angular.module('imagequizz').controller('SettingsController',
          * Funktion zum überprüfen, welche Statistiken zurückgesetzt werden sollen.
          */
         this.resetStats = function () {
+            this.stats = StatData.findAll();
             $scope.modules = [];
             this.stats.forEach(function (stat) {
                 $scope.questionList.forEach(function (question) {
