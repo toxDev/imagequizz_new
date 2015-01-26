@@ -24,42 +24,42 @@ angular.module('imagequizz').factory('QuestionData',
 
         var service = {
             findAll: function () {
-                if (sync === 1) {
+                if (sync == 1) {
                     return QuestionDataPersist.findAll();
                 } else {
                     return QuestionDataLocal.findAll();
                 }
             },
             findById: function (id) {
-                if (sync === 1) {
+                if (sync == 1) {
                     QuestionDataPersist.findById(id);
                 } else {
                     QuestionDataLocal.findById(id);
                 }
             },
             delete: function (id) {
-                if (sync === 1) {
+                if (sync == 1) {
                     QuestionDataPersist.delete(id);
                 } else {
                     QuestionDataLocal.delete(id);
                 }
             },
             persist: function (question) {
-                if (sync === 1) {
+                if (sync == 1) {
                     QuestionDataPersist.persist(question);
                 } else {
                     QuestionDataLocal.persist(question);
                 }
             },
             update: function (question) {
-                if (sync === 1) {
+                if (sync == 1) {
                      QuestionDataPersist.update(question);
                  } else {
                      QuestionDataLocal.update(question);
                  }
             },
             setSync: function (set, userid) {
-                if (set === 1) {
+                if (set == 1) {
                     QuestionDataPersist.setUID(userid);
                     sync = 1;
                 } else {
