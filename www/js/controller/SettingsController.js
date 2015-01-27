@@ -119,6 +119,7 @@ angular.module('imagequizz').controller('SettingsController',
          * Funktion zum zurücksetzen der gelernten Statistiken.
          */
         this.resetLearnedCards = function () {
+            this.stats = StatData.findAll();
             for (var i = 0; i < $scope.modules.length; i++) {
                 if ($scope.modules[i].status) {
                     this.stats.forEach(function (stat) {
