@@ -10,7 +10,6 @@
 angular.module('imagequizz').factory('QuestionImport',
     function ($http) {
 
-        //var url = 'https://www.googledrive.com/host/0B4eFE6Byab8JVVZCSFU4bGFwemc';
         var url = 'https://www.googledrive.com/host/0B0qhk0Zibw_FWE5HS0xGWlEzeDA';
         var modules = [];
         var promise = $http.get(url);

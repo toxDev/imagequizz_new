@@ -1,6 +1,6 @@
 /**
  * Der SettingsController ist zuständig für den SettingsView der App. Er kümmert sich zum Beispiel um die Abhandlung
- * der beiden Modale und ihrer Funktionen. Desweiteren kann man mit diesm Controller weitere Kategorien(Module) hinzufügen,
+ * der beiden Modale und ihrer Funktionen. Des weiteren kann man mit diesem Controller weitere Kategorien(Module) hinzufügen,
  * die Statistiken zurücksetzen und die Benutzerdaten über ein Firebase backend sichern.
  *
  * @author Andreas Ebner, <andreas.ebner@mni.thm.de>
@@ -188,11 +188,6 @@ angular.module('imagequizz').controller('SettingsController',
                 var confirmPopup = $ionicPopup.confirm({
                     title: 'Cloud deaktivieren',
                     template: 'Möchten Sie die Synchronisation beenden und offline arbeiten?<hr>Die Clouddaten stehen offline nicht zur Verfügung!'
-                    //TO-DO Button an deutsches Layout anpassen
-                    /*                        buttons: [
-                     {text: 'Nein'},
-                     {text: 'Ja',type: 'button-positive'},
-                     ]*/
                 });
                 confirmPopup.then(function (res) {
                     if (res) {

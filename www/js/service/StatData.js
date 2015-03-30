@@ -25,10 +25,7 @@ angular.module('imagequizz').factory('StatData',
                 } else {
                     return StatDataLocal.findAll();
                 }
-            },/*,
-             findById: function (id) {
-             return this.findAll().$getRecord(id);
-             },*/
+            },
             delete: function (id) {
                 if (sync == 1) {
                     StatDataPersist.delete(id);

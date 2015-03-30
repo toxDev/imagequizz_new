@@ -1,7 +1,7 @@
 /**
  *
- * Der StatisticController ist für die Anzeige und die aktualisierung der Statistiken dar. Im Controller wird auch ein
- * Loadingscreen inistallisiert, der den Benutzer anzeigt das die Daten geladen werden.
+ * Der StatisticController ist für die Anzeige und die aktualisierung der Statistiken zuständig. Im Controller wird auch ein
+ * Loadingscreen initialisiert, der den Benutzer anzeigt das die Daten geladen werden.
  *
  * @author Andreas Ebner, <andreas.ebner@mni.thm.de>
  * @author Florian Kolb, <florian.kolb@mni.thm.de>
@@ -57,24 +57,6 @@ angular.module('imagequizz').controller('StatisticController',
                     sum_false += $scope.stats[i].countWrong;
                 }
             }
-
-            /*        //Statistik Daten abrufen (PieChart)
-             var categorys = QuestionData.findAllCategorys();
-             var chartRows = [];
-             for (var i = 0; i < categorys.length; i++) {
-             var questions = QuestionData.findAllQuestionsByCategory(categorys[i]);
-             var category_right = 0;
-             var category_wrong = 0;
-             for (var j = 0; j < questions.length; j++) {
-             var stat = StatData.findStatByQuestionId(questions[j].id);
-             if (stat.actRightSeries >= 6) {
-             category_right++;
-             } else {
-             category_wrong++;
-             }
-             }
-             chartRows.push({c: [{v: categorys[i]}, {v: category_right}, {v: category_wrong}]})
-             }*/
 
             //Statistik Daten abrufen (BarChart)
             var categorys = [];

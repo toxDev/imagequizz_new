@@ -1,6 +1,7 @@
 /**
  *
- *  Der QuestionListController ist zuständig für die Anzeige der jeweiligen Fragen einer Kategorie.
+ *  Der QuestionListController ist zuständig für die Anzeige der jeweiligen Fragen einer Kategorie. 
+ *  Aus dieser Ansicht kommt man dann zu jeder einzelnen Fragenansicht.
  *
  * @author Andreas Ebner, <andreas.ebner@mni.thm.de>
  * @author Florian Kolb, <florian.kolb@mni.thm.de>
@@ -21,8 +22,6 @@ angular.module('imagequizz').controller('QuestionListController',
                 $scope.questionList.push($scope.questions[i]);
             }
         }
-
-        //$rootScope.$viewHistory.backView = null;
 
         /**
          * Wechselt beim klick auf den "Zurück-Pfeil" den View auf die ModuleList

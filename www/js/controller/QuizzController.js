@@ -1,7 +1,7 @@
 /**
  *
  * Der QuizzController kümmert sich um die korrekte Logik im QuizzModus. Er holt sich immer die nächste Frage und prüft
- * die Eingabe des benutzers auf richtigkeit.
+ * die Eingabe des Benutzers auf Korrektheit.
  *
  * @author Andreas Ebner, <andreas.ebner@mni.thm.de>
  * @author Florian Kolb, <florian.kolb@mni.thm.de>

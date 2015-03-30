@@ -11,9 +11,6 @@ angular.module('imagequizz').factory('QuestionDataPersist',
     function ($firebase, FIREBASE_URL) {
 
         var rootRef = new Firebase(FIREBASE_URL);
-        //var statRef = rootRef.child('questions');
-        //Angular Fire wrapper
-        //var statRefAngular = $firebase(statRef);
 
         if(!localStorage.getItem('userid')){
             localStorage.setItem('userid', rootRef.push().key());
@@ -35,7 +32,6 @@ angular.module('imagequizz').factory('QuestionDataPersist',
                         questions.$remove(this.findById(questions[i].$id));
                     }
                 }
-                //this.findAll().$remove(this.findById(id));
             },
             persist: function (question) {
                 this.findAll().$add(question);

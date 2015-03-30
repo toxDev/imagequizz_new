@@ -1,6 +1,6 @@
 /**
  *
- *  Der QuestionController ist für die Anzeige einer gewählten Frage zuständig. Diese wird auch vom QuizzModus benutzt.
+ *  Der QuestionController ist für die Anzeige einer gewählten Frage zuständig, die dann auch vom QuizzModus benutzt wird.
  *
  * @author Andreas Ebner, <andreas.ebner@mni.thm.de>
  * @author Florian Kolb, <florian.kolb@mni.thm.de>
@@ -23,12 +23,6 @@ angular.module('imagequizz').controller('QuestionController',
                 break;
             }
         }
-/*        $scope.questions.forEach(function (item) {
-           if(item.id == $stateParams.id){
-               $scope.questionList = item;
-           }
-        });*/
-
 
         /**
          * Informationstext zur angezeigten Frage
