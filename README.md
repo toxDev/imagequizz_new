@@ -9,6 +9,6 @@ ImageQuizz App 2014
 
 ####FeatureList
 
-* [ ] Quizz Modus
-* [ ] Statistik über alle gespielten Runden
-* [ ] Ausgabe der Statistik am Ende jeder Runde
+* [x] Quizz Modus
+* [x] Statistik über alle gespielten Runden
+* [x] Ausgabe der Statistik am Ende jeder Runde
